@@ -20,7 +20,7 @@ updatescript () {
 cat >/tmp/updatescript.sh <<EOL
 runupdate () {
     if [ "$SCRIPTNAME" = "/usr/bin/gpgpassman" ]; then
-        wget -O /tmp/gpgpassman.sh "https://raw.githubusercontent.com/simoniz0r/gpgpassman/master/gpgpassman.sh"
+        wget -O /tmp/gpgpassman.sh "https://raw.githubusercontent.com/jmfgdev/gpgpassman/master/gpgpassman.sh"
         if [ -f "/tmp/gpgpassman.sh" ]; then
             sudo rm -f /usr/bin/gpgpassman
             sudo mv /tmp/gpgpassman.sh /usr/bin/gpgpassman
@@ -35,7 +35,7 @@ runupdate () {
             fi
         fi
     else
-        wget -O /tmp/gpgpassman.sh "https://raw.githubusercontent.com/simoniz0r/gpgpassman/master/gpgpassman.sh"
+        wget -O /tmp/gpgpassman.sh "https://raw.githubusercontent.com/jmfgdev/gpgpassman/master/gpgpassman.sh"
         if [ -f "/tmp/gpgpassman.sh" ]; then
             rm -f $SCRIPTNAME
             mv /tmp/gpgpassman.sh $SCRIPTNAME
@@ -76,8 +76,8 @@ EOL
 
 updatecheck () {
     echo "Checking for new version..."
-    UPNOTES="$(wget -q "https://raw.githubusercontent.com/simoniz0r/gpgpassman/master/gpgpassman.sh" -O - | sed -n '9p' | tr -d 'X="')"
-    VERTEST="$(wget -q "https://raw.githubusercontent.com/simoniz0r/gpgpassman/master/gpgpassman.sh" -O - | sed -n '8p' | tr -d 'GPMVER="')"
+    UPNOTES="$(wget -q "https://raw.githubusercontent.com/jmfgdev/gpgpassman/master/gpgpassman.sh" -O - | sed -n '9p' | tr -d 'X="')"
+    VERTEST="$(wget -q "https://raw.githubusercontent.com/jmfgdev/gpgpassman/master/gpgpassman.sh" -O - | sed -n '8p' | tr -d 'GPMVER="')"
     if [[ $GPMVER < $VERTEST ]]; then
         echo "Installed version: $GPMVER -- Current version: $VERTEST"
         echo "A new version is available!"
